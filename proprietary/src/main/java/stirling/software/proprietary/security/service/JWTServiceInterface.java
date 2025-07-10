@@ -2,13 +2,11 @@ package stirling.software.proprietary.security.service;
 
 import java.util.Map;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBooleanProperty;
 import org.springframework.security.core.Authentication;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@ConditionalOnBooleanProperty("security.jwt.enabled")
 public interface JWTServiceInterface {
 
     /**
@@ -17,16 +15,7 @@ public interface JWTServiceInterface {
      * @param authentication Spring Security authentication object
      * @return JWT token as a string
      */
-    String generateToken(Authentication authentication);
-
-    /**
-     * Generate a JWT token with custom claims
-     *
-     * @param username the username
-     * @param claims additional claims to include in the token
-     * @return JWT token as a string
-     */
-    String generateToken(String username, Map<String, Object> claims);
+    String generateToken(Authentication authentication, Map<String, Object> claims);
 
     /**
      * Validate a JWT token
